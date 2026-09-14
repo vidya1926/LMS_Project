@@ -1,0 +1,369 @@
+lecture_id,slide_index,raw_text
+Lecture_6,0,"Lecture - 2
+Introduction to Unified Modeling Language"
+Lecture_6,1,"Introduction
+Concepts of modeling in general and object-oriented modeling.
+
+Use case diagrams
+Class diagrams
+Sequence diagrams 
+Statechart diagrams 
+Activity diagrams
+
+"
+Lecture_6,2,"Introduction
+Functional model: represented by use case diagrams  describes the functionality of the system from the user’s point of view.
+
+Object model: represented by class diagrams  describes the structure of the system in terms of objects, attributes, associations, and operations.
+ 
+Dynamic model: represented by interaction diagrams, state machine diagrams, activity diagrams  describes the internal behavior of the system."
+Lecture_6,3,"Use case diagrams
+Describe the functional behavior of the system as seen by the user.
+Class diagrams
+Describe the static structure of the system: Objects, attributes, associations.
+Sequence diagrams
+Describe the dynamic behavior between objects of the system.
+Statechart diagrams
+Describe the dynamic behavior of an individual object.
+Activity diagrams
+Describe the dynamic behavior of a system, in particular the workflow.
+Introduction"
+Lecture_6,4,"Use Case Diagrams
+Used during requirements elicitation and analysis to represent the functionality of the system.
+
+Focuses on the behavior of the system from an external point of view.
+ 
+Describes a function provided by the system that yields a visible result for an actor.
+ 
+Identification of actors and use cases results in the definition of the boundary of the system."
+Lecture_6,5,"An Actor represents a role, that is, a type of user of the system
+Visible from the outside of the system.
+Use case model:
+The set of all use cases that completely describe the functionality of the  system.
+A use case represents a class of functionality provided by the system
+Use Case Diagrams"
+Lecture_6,6,"Actors
+An actor is a model for an external entity which interacts (communicates) with the system:
+User
+External system (Another system)
+Physical environment (e.g. Weather)
+An actor has a unique name and an optional description
+Examples:
+Passenger: A person in the train
+GPS satellite: An external system that provides the system with  GPS coordinates.
+Name
+Optional 
+Description"
+Lecture_6,7,"Use Case
+• A use case represents a class of functionality provided by the system 
+• Use cases can be described textually, with a focus on the event flow between actor and system
+• The textual use case description consists of 6 parts:
+Unique name
+Participating actors
+Entry conditions
+Exit conditions
+Flow of events
+Special requirements."
+Lecture_6,8,"Textual Use Case Description Example
+1. Name: Purchase ticket
+
+2. Participating actor: Passenger
+
+3. Entry condition: 
+Passenger stands in front of ticket distributor
+Passenger has sufficient money to purchase ticket
+
+4. Exit condition:
+Passenger has ticket
+5. Flow of events:
+1. Passenger selects the number of zones to be traveled
+2. Ticket Distributor displays the amount due
+3. Passenger inserts money, at least the amount due
+4. Ticket Distributor returns change
+5. Ticket Distributor issues ticket
+6. Special requirements: None.
+"
+Lecture_6,9,"Uses Cases can be related
+
+Extends Relationship
+To represent seldom invoked use cases or exceptional functionality.
+
+Includes Relationship
+To represent functional behavior common to more than one use case."
+Lecture_6,10,"The <<extends>> Relationship
+<<extends>> relationships model exceptional or seldom invoked cases
+The exceptional event flows are factored out of the main event flow for clarity
+The direction of an <<extends>> relationship is to the extended use case 
+Use cases representing exceptional flows can extend more than one use case.
+"
+Lecture_6,11,"The <<includes>> Relationship
+<<includes>> relationship represents common functionality needed in more than one use case
+<<includes>> behavior is factored out for reuse, not because it is an exception
+The direction of a <<includes>> relationship is to the using use case (unlike  the direction of the <<extends>> relationship)."
+Lecture_6,12,Use Case Diagrams
+Lecture_6,13,"Class Diagrams
+Used to describe the structure of the system. 
+
+Classes are abstractions that specify the common structure and behavior of a set of objects. 
+
+Objects are instances of classes that are created, modified, and destroyed during the execution of the system. 
+
+An object has state that includes the values of its attributes and its links with other objects. "
+Lecture_6,14,"Class Diagrams
+Used
+during requirements analysis to model application domain concepts.
+during system design to model subsystems.
+during object design to specify the detailed behavior and attributes of classes.
+"
+Lecture_6,15,"Classes
+A class represents a concept
+A class encapsulates state (attributes) and behavior (operations)
+Signature
+The class name is the only mandatory information
+Each attribute has a type
+Each operation has a signature
+Type"
+Lecture_6,16,"Instances
+An instance represents a phenomenon
+The attributes are represented with their values
+The name of an instance is underlined 
+The name can contain only the class name of the instance (anonymous instance)
+
+
+
+"
+Lecture_6,17,"Actor vs Class vs Object
+
+Actor 
+An entity outside the system to be modeled, interacting with the system (“Passenger”).
+Class
+An abstraction modeling an entity in the application or solution domain.
+The class is part of the system model (“User”, “Ticket distributor”, “Server”).
+Object
+A specific instance of a class (“Joe, the passenger who is purchasing a ticket from the ticket distributor”).  "
+Lecture_6,18,"Associations
+Associations denote relationships between classes.
+
+The multiplicity of an association end denotes how many objects the instance of a class can legitimately reference."
+Lecture_6,19,"1-to-1 and 1-to-many Associations
+1-to-1 association
+1-to-many association"
+Lecture_6,20,"Many-to-Many Associations 
+StockExchange
+Company
+tickerSymbol
+*
+*"
+Lecture_6,21,"From Problem Statement To  Object Model
+ 
+Problem Statement: A stock exchange lists many companies. Each company is uniquely identified by a ticker symbol"
+Lecture_6,22,"From Problem Statement to Code
+Pr
+oblem Statement
+: 
+A
+ stock exchange lists many companies. 
+Each company is identified by a ticker symbol
+Class Diagram:
+ private Vector m_Company = new Vector();
+ public int m_tickerSymbol;
+ private Vector m_StockExchange = new Vector();
+StockExchange
+Company
+tickerSymbol
+Lists 
+*
+*
+Associations
+are mapped to 
+Attributes!"
+Lecture_6,23,"Aggregation
+An aggregation is a special case of association denoting a “consists-of” hierarchy
+The aggregate is the parent class, the components are the children classes
+A solid diamond denotes composition: A strong form of aggregation where the life time of the component instances  is controlled by the aggregate. That is, the parts don’t exist on their won (“the whole controls/destroys the parts”)  "
+Lecture_6,24,"Qualifiers
+Qualifiers can be used to reduce the multiplicity of an association.
+   With qualification
+0..1"
+Lecture_6,25,"Qualification: Another Example
+tickerSymbol
+1
+StockExchange
+Company
+tickerSymbol
+Lists 
+*
+*"
+Lecture_6,26,"Inheritance
+Inheritance is another special case of an association denoting a “kind-of” hierarchy. 
+Inheritance simplifies the analysis model by introducing a taxonomy.
+The children classes inherit the attributes and operations of the parent class.
+"
+Lecture_6,27,"Packages	
+Packages help you to organize UML models to increase their readability. 
+We can use the UML package mechanism to organize classes into subsystems.  
+
+
+
+
+
+
+Any complex system can be decomposed into subsystems, where each subsystem is modeled as a package.
+"
+Lecture_6,28,"Object Modeling in Practice
+Class Identification: Name of Class, Attributes and Methods
+
+Is Foo the right name?"
+Lecture_6,29,"Object Modeling in Practice:  Brainstorming 
+
+Is Foo the right name?"
+Lecture_6,30,"Object Modeling in Practice: More classes
+CustomerId
+CustomerId
+1) Find New Classes
+2) Review Names, Attributes and Methods"
+Lecture_6,31,"Object Modeling in Practice: Associations
+1) Find New Classes
+2) Review Names, Attributes and Methods
+3) Find Associations between Classes
+owns
+4) Label the generic assocations
+6) Review associations
+*
+2
+*
+?
+has
+5) Determine the multiplicity of the assocations"
+Lecture_6,32,Practice Object Modeling: Find Taxonomies
+Lecture_6,33,"Practice Object Modeling: Simplify, Organize
+Savings
+Account
+Withdraw()
+Checking
+Account
+Withdraw()
+Mortgage
+Account
+Withdraw()
+Show Taxonomies
+separately"
+Lecture_6,34,"Class
+Association
+Multiplicity
+Class diagrams represent the structure of the system
+2
+1
+Class Diagrams"
+Lecture_6,35,"1
+2
+
+push()release()
+1
+Watch
+Operations
+state
+PushButton
+Attribute
+Class
+Association
+Multiplicity
+Class Diagrams"
+Lecture_6,36,"Sequence Diagrams
+
+Used to formalize the dynamic behavior of the system and to visualize the communication among objects. 
+
+Useful for identifying additional objects that participate in the use cases. 
+
+Objects involved in a use case are called participating objects. 
+
+Sequence diagrams represent the interactions that take place among these objects. "
+Lecture_6,37,"Sequence Diagrams
+Used during analysis
+To refine use case descriptions
+to find additional objects (“participating objects”)
+Used during system design 
+to refine subsystem interfaces
+Instances  are represented by rectangles. Actors by sticky figures
+Lifelines are represented by dashed lines
+Messages are represented by arrows 
+Activations are represented by narrow rectangles.
+Focus on 
+Controlflow
+Messages ->
+Operations on
+ participating Object"
+Lecture_6,38,"Sequence Diagrams can also model the Flow of Data 
+The source of an arrow indicates the activation which sent the message
+Horizontal dashed arrows indicate data flow, for example return results from a message
+Dataflow
+…continued on next slide..."
+Lecture_6,39,"Sequence Diagrams: Iteration & Condition
+Iteration is denoted by a * preceding the message name
+Condition is denoted by boolean expression in [ ] before the message name
+ChangeProcessor
+Iteration
+Condition
+
+…continued on next slide...
+…continued from previous slide...
+*"
+Lecture_6,40,"Creation and destruction
+Creation is denoted by a message arrow pointing to the object
+Destruction is denoted by an X mark at the end of the destruction activation
+In garbage collection environments, destruction can be used to denote the end of the useful life of an object.
+ChangeProcessor
+…continued from previous slide...
+Creation of Ticket
+Destruction of Ticket"
+Lecture_6,41,"Sequence Diagram Properties
+UML sequence diagram represent behavior in terms of interactions.
+Useful to identify or find missing objects.
+Time consuming to build, but worth the investment.
+Complement the class diagrams (which represent structure)."
+Lecture_6,42,"Message
+:Time
+Object
+Activation
+Sequence diagrams represent the behavior of a system 
+as messages (“interactions”) between different objects
+Actor
+Lifeline
+Sequence Diagrams"
+Lecture_6,43,"State Machines
+
+Describes the dynamic behavior of an individual object as a number of states and transitions between these states. 
+
+A state represents a particular set of values for an object. 
+
+Given a state, a transition represents a future state the object can move to, and the conditions associated with the change of state."
+Lecture_6,44,"State
+Initial state
+Final state
+Transition
+Event
+Represent behavior of a single object with interesting dynamic behavior.
+State Machines"
+Lecture_6,45,"Activity Diagrams
+An activity diagram is a special case of a state chart diagram. 
+The states are activities (“functions”). 
+An activity diagram is useful to depict the workflow in a system."
+Lecture_6,46,"Activity Diagrams can model Concurrency
+Synchronization of multiple activities. 
+Splitting the flow of control into multiple threads.
+Synchronization
+Splitting"
+Lecture_6,47,"Activity Diagrams: Grouping of Activities
+Activities may be grouped into swimlanes to denote the object or subsystem that implements the activities.
+
+Open Incident
+Allocate
+Resources
+Coordinate
+Resources
+Document
+Incident
+Archive
+Incident
+Dispatcher
+Field Officer"
